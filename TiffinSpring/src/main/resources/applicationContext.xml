@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="taxCalculator" class="tiffin.GstTaxCalculator"/>
+    <bean id="deliveryPolicy" class="tiffin.DeliveryPolicy">
+        <property name="deliveryFee" value="30"/>
+        <property name="freeAbove" value="300"/>
+    </bean>
+    <bean id="orderService" class="tiffin.OrderService" autowire="byType"/>
+
+    <bean id="basicPlan" class="tiffin.TiffinPlan">
+        <property name="name" value="Basic"/>
+        <property name="pricePerDay" value="90"/>
+    </bean>
+    <bean id="standardPlan" class="tiffin.TiffinPlan">
+        <property name="name" value="Standard"/>
+        <property name="pricePerDay" value="120"/>
+    </bean>
+    <bean id="premiumPlan" class="tiffin.TiffinPlan">
+        <property name="name" value="Premium"/>
+        <property name="pricePerDay" value="160"/>
+    </bean>
+
+    <bean id="ticket" class="tiffin.OrderTicket" scope="prototype"/>
+    <bean id="kitchenInfo" class="tiffin.KitchenInfo">
+        <property name="kitchenName" value="Annapurna Central Kitchen"/>
+    </bean>
+</beans>
